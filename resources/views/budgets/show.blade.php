@@ -1,0 +1,4 @@
+@extends('layouts.app')
+@section('content')
+<h2>Budget Details: {{ $budget->name }}</h2>
+<div class='card mb-4'><div class='card-body'><p>Amount: ₹{{ number_format($budget->amount, 2) }}</p><p>Spent: ₹{{ number_format($spent, 2) }}</p><p>Remaining: ₹{{ number_format($remaining, 2) }}</p><p>Usage: {{ number_format($usage, 2) }}%</p><div class='progress'><div class='progress-bar {{ $usage > 100 ? 'bg-danger' : 'bg-success' }}' role='progressbar' style='width: {{ min($usage, 100) }}%'></div></div>@if($usage > 100)<div class='alert alert-danger mt-2'>Budget Exceeded!</div>@endif</div></div><a href='{{ route('budgets.index') }}' class='btn btn-secondary'>Back</a>@endsection

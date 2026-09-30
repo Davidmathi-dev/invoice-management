@@ -1,0 +1,3 @@
+@extends('layouts.app')
+@section('content')
+<h2>Add Payment</h2><form action='{{ route('payments.store') }}' method='POST'>@csrf<div class='mb-3'><label>Invoice</label><select name='sales_invoice_id' class='form-control'>@foreach($invoices as $inv)<option value='{{ $inv->id }}'>{{ $inv->invoice_number }} (Total: {{ $inv->total }})</option>@endforeach</select></div><div class='mb-3'><label>Amount</label><input type='number' step='0.01' name='amount' class='form-control' required></div><div class='mb-3'><label>Date</label><input type='date' name='payment_date' class='form-control' required></div><div class='mb-3'><label>Method</label><input type='text' name='payment_method' class='form-control' required></div><button class='btn btn-success'>Save</button></form>@endsection
